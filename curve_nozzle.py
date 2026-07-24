@@ -6,19 +6,23 @@ import matplotlib.pyplot as plt
 # -----------------------------
 # 半径 [mm]
 R_in = 17.0      # 上流半径
-R_t  = 9.14      # スロート半径
+R_t  = 8.65      # スロート半径
 epsilon = 3.17   # 開口比 A_e / A_t
 
 # 出口半径 [mm]
 R_e = R_t * np.sqrt(epsilon)
 
+# 出口半径の直接指定 [mm]
+# R_e = 15.4
+
+
 # 軸方向長さ [mm]
-L_c = 15.0       # 収束部長さ
-L_d = 25.0       # 拡大部長さ
+L_c = 22.0       # 収束部長さ
+L_d = 18.0       # 拡大部長さ
 L   = L_c + L_d  # 全長
 
 # 壁面角度 [deg]
-theta_t_deg = 30.0   # スロートでの壁角度（収束→拡大の接線）
+theta_t_deg = 0.0   # スロートでの壁角度(必ず0 deg)
 theta_e_deg = 5.0    # 出口での壁角度
 
 theta_t = np.deg2rad(theta_t_deg)
@@ -121,10 +125,6 @@ print(f"L_c   = {L_c:.3f} mm")
 print(f"L_d   = {L_d:.3f} mm")
 print(f"L_tot = {L:.3f} mm")
 print(f"theta_t = {theta_t_deg:.1f} deg, theta_e = {theta_e_deg:.1f} deg")
-
-# throatがずれたので対応
-min = np.min(r_c)
-print(min)
 
 # CSVに書き出し
 x_wall = np.concatenate([x_c, x_d])
